@@ -75,10 +75,12 @@ h1 {
     font-weight: 500;
     /* #5 #app-bar spacing */
     box-sizing: border-box;
-    padding: 24px 16px 20px 16px;
+    padding: 0 16px;
     /* #5 MOOCUS image alignment */
     position: relative;
     /* we need this, so that the image's absolute position is relative to the app bar */
+    display: flex;
+    align-items: center;
 }
 
 h1#left-app-bar {
@@ -99,9 +101,24 @@ h1 a {
     color: white;
 }
 
+h1 #add-channel-bar{
+  display: none;
+  width: 85%;
+  align-items: center;
+}
+h1 #add-channel-bar input{
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  border-radius: 4px;
+  border: none;
+  padding: 3px;
+}
+
 h1 #channel-star {
     /* #6 #liking #filled  */
-    font-size: 24px;
+    font-size: 16px;
 }
 
 h1 button {
@@ -216,9 +233,10 @@ li.selected {
     text-align: left;
     font-size: 28px;
     /* scroll when it has too many emojis */
-    overflow-y: auto;
     /* #6 #hide the #smile menu */
     display: none;
+    overflow: auto;
+    word-wrap: break-word;
 }
 
 #emojis-button .fa-smile {
@@ -229,6 +247,12 @@ li.selected {
 #send-message .fa-arrow-right {
     font-size: 24px;
     justify-content: flex-end;
+}
+
+#create-channel-button {
+  display: none;
+  padding: 0 4px;
+  font-weight:bold;
 }
 
 /* MESSAGES */
@@ -316,20 +340,22 @@ input:focus {
 }
 
 #fab {
+    min-width: 56px;
     width: 56px;
     height: 56px;
     border-radius: 50%;
+    padding: 0;
+    margin: 0;
     position: absolute;
     bottom: 88px;
     right: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 30px;
+    font-weight: 200;
 }
 
-#fab p {
-    font-size: 30px;
-}
 
 .message:not(.own) p::before {
     content: ' ';
@@ -341,14 +367,13 @@ input:focus {
     height: 0;
     border-bottom: 20px solid transparent;
     border-right: 20px solid white;
-
 }
 
 .own p::after {
     content: ' ';
     display: inline-block;
     position: absolute;
-    right:  -20px;
+    right: -20px;
     top: 23px;
     width: 0;
     height: 0;
